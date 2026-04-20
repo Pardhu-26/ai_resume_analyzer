@@ -1,7 +1,7 @@
-import pymupdf as fitz
+import pdfplumber
 def extract_text(file):
     text = ""
-    pdf = fitz.open(stream = file.read(), filetype = "pdf")
+    pdf = pdfplumber.open(stream = file.read(), filetype = "pdf")
     for page in pdf:
         text += page.get_text()
     return text
