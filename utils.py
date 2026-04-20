@@ -7,6 +7,13 @@ def extract_text(file):
         text += page.get_text()
     return text
 
+def is_resume(text):
+    resume_keywords = ["experience", "education", "skills", "projects", 
+                       "internship", "certifications", "objective", "summary"]
+    text_lower = text.lower()
+    matches = sum(1 for word in resume_keywords if word in text_lower)
+    return matches >= 3
+
 job_descriptions = {
     "Data Scientist": "machine learning python statistics pandas numpy deep learning",
     "Data Analyst": "excel sql visualization tableau powerbi data cleaning",
