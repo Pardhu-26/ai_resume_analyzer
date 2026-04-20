@@ -1,5 +1,4 @@
-import fitz
-
+import pymupdf as fitz
 def extract_text(file):
     text = ""
     pdf = fitz.open(stream = file.read(), filetype = "pdf")
