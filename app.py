@@ -14,6 +14,11 @@ from utils import job_descriptions
 
 if uploaded_file:
     text = extract_text(uploaded_file)
+    from utils import is_resume
+
+    if not is_resume(text):
+        st.error("⚠️ This doesn't look like a resume. Please upload a valid resume PDF.")
+        st.stop()
     scores = match_resume_to_jobs(text, job_descriptions)
 
     max_score = max(scores.values())
