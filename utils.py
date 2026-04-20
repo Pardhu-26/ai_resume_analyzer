@@ -1,10 +1,10 @@
-import pdfplumber
+import fitz
 
 def extract_text(file):
     text = ""
-    with pdfplumber.open(file) as pdf:
-        for page in pdf.pages:
-            text += page.extract_text() or ""
+    pdf = fitz.open(stream = file.read(), filetype = "pdf")
+    for page in pdf:
+        text += page.get_text()
     return text
 
 job_descriptions = {
